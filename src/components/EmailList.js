@@ -13,7 +13,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import './EmailList.css';
 import Section from './Section';
 import EmailRow from './ui/EmailRow';
-import { collection, getDocs, query, orderBy, doc, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase/init'
 
 function EmailList() {
@@ -22,19 +22,19 @@ function EmailList() {
     // onSnapshot implementation still needed so email list can auto update after sending email
     
     useEffect(() => {
-        async function getAllPosts() {
-            const q = query(
-                collection(db, "emails"),
-                orderBy("timestamp", "desc")
-            );
-            const data = await getDocs(q);
-            const emails = data.docs.map((doc) => ({
-                id: doc.id,
-                data: doc.data(),
-            }))
-            setEmails(emails)
-        }
-        getAllPosts()
+        const q = query(
+            collection(db, "emails"),
+            orderBy("timestamp", "desc")
+        );
+        onSnapshot( q, (querySnapshot) => {
+            setEmails(
+                querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    data: doc.data(),
+                }))
+            )
+        })
+
     }, [])
 
     return (
@@ -87,126 +87,6 @@ function EmailList() {
                     />
                 ))}
 
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blah"
-                    time="10pm"
-                />
-                <EmailRow 
-                    title="Twitch"
-                    subject="stream updates"
-                    description="blah blah blah blahblah blah blah blahblah blah blah blahblah blah blah blah"
-                    time="10pm"
-                />
             </div>
         </div>
     );

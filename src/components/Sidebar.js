@@ -32,15 +32,15 @@ const dispatch = useDispatch() ;
       <SidebarOption
         Icon={InboxIcon}
         title="inbox"
-        number={54}
+        number={37}
         selected={true}
       />
-      <SidebarOption Icon={StarIcon} title="starred" number={54} />
-      <SidebarOption Icon={AccessTimeIcon} title="Snoozed" number={54} />
-      <SidebarOption Icon={LabelImportantIcon} title="Important" number={54} />
-      <SidebarOption Icon={NearMeIcon} title="Sent" number={54} />
-      <SidebarOption Icon={NoteIcon} title="Drafts" number={54} />
-      <SidebarOption Icon={ExpandMoreIcon} title="More" number={54} />
+      <SidebarOption Icon={StarIcon} title="starred" number={0} />
+      <SidebarOption Icon={AccessTimeIcon} title="Snoozed" number={0} />
+      <SidebarOption Icon={LabelImportantIcon} title="Important" number={0} />
+      <SidebarOption Icon={NearMeIcon} title="Sent" number={0} />
+      <SidebarOption Icon={NoteIcon} title="Drafts" number={0} />
+      <SidebarOption Icon={ExpandMoreIcon} title="More" number={0} />
 
       <div className="sidebar__footer">
         <div className="sidebar__footerIcons">

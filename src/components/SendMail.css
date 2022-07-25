@@ -28,6 +28,7 @@
 }
 
 .sendMail__send {
+    color: white !important;
     background-color: #3079ed !important;
     text-transform: capitalize !important;
     margin: 15px !important;
